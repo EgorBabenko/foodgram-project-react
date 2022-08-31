@@ -118,7 +118,8 @@ class Favorite(models.Model):
         verbose_name_plural = 'Избранное'
         constraints = [
             # ограничение повторного добавления в избранное
-            models.UniqueConstraint(fields=['user', 'recipe'], name='un'), ]
+            models.UniqueConstraint(fields=['user', 'recipe'],
+                                    name='un_fav'), ]
 
     def __str__(self):
         return f'{self.recipe} в избранном у {self.user}'
@@ -139,7 +140,7 @@ class ShoppingCart(models.Model):
         verbose_name_plural = 'Списки покупок'
         constraints = [
             # ограничение повторной покупки
-            models.UniqueConstraint(fields=['user', 'recipe'], name='un'), ]
+            models.UniqueConstraint(fields=['user', 'recipe'], name='uniq'), ]
 
     def __str__(self):
         return f'{self.recipe} в списке покупок у {self.user}'

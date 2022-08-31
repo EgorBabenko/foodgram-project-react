@@ -45,7 +45,7 @@ class Following(models.Model):
         verbose_name_plural = 'Подписки'
         constraints = [
             # ограничение повторной одинаковой подписки
-            models.UniqueConstraint(fields=['follower', 'leader'], name='un'),
+            models.UniqueConstraint(fields=['follower', 'leader'], name='f_u'),
             # ограничение подписки самого на себя
             models.CheckConstraint(check=~Q(follower__exact=F('leader')),
                                    name='selfsub')
