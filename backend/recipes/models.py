@@ -90,8 +90,8 @@ class RecipeIngredient(models.Model):
                                    related_name='recipe_use',
                                    on_delete=models.CASCADE,
                                    verbose_name='тип ингредиента')
-    amount = models.PositiveIntegerField(blank=False, null=False,
-                                         verbose_name='количество')
+    amount = models.FloatField(blank=False, null=False,
+                               verbose_name='количество')
 
     class Meta:
         verbose_name = 'Ингредиент рецепта'

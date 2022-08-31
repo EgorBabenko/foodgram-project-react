@@ -83,7 +83,7 @@ class ShortRecipeSerializer(serializers.ModelSerializer):
 
 class AddIngredientsToRecipe(serializers.ModelSerializer):
     id = serializers.PrimaryKeyRelatedField(queryset=Ingredient.objects.all())
-    amount = serializers.IntegerField()
+    amount = serializers.FloatField()
 
     class Meta:
         model = RecipeIngredient
