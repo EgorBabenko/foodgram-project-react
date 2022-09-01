@@ -6,8 +6,8 @@ def get_error_message(error, name):
     repeat_shop = 'рецепт уже в списке покупок'
     answer_dict = {
         'sub': lambda: repeat_sub if uniq else self_sub,
-        'favorite': lambda: repeat_fav,
-        'shopping': lambda: repeat_shop
+        'Favorite': lambda: repeat_fav,
+        'ShoppingCart': lambda: repeat_shop
     }
 
     return answer_dict[name]()

@@ -1,7 +1,8 @@
 import base64
+
 from django.core import validators
-from django.db import models
 from django.core.files.base import ContentFile
+from django.db import models
 from rest_framework.serializers import ImageField
 
 

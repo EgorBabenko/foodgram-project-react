@@ -21,11 +21,6 @@ def get_is_in_shopping_cart_field(request, obj):
         return obj in request.user.purchases_list.all()
     return False
 
-
-def get_recipes_count_field(obj):
-    return obj.recipes.count()
-
-
 def get_user_recipes_field(obj, serializer, limit):
     if limit:
         limit = int(limit)

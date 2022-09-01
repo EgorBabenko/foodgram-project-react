@@ -21,3 +21,4 @@ drf-extra-fields==3.2.1
 djoser==2.1.0
 weasyprint==52.5
 django-cors-headers
+python-dotenv

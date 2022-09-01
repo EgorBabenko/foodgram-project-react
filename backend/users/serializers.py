@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from .models import CustomUser
 from services.get_fields import check_subscription
+
+from .models import CustomUser
 
 
 class CustomUserSerializer(serializers.ModelSerializer):

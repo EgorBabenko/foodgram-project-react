@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from .models import Tag, Ingredient, Recipe, RecipeIngredient
-from users.serializers import CustomUserSerializer
-from services.get_fields import (get_recipe_ingredient_list,
-                                 get_is_favorited_field,
-                                 get_is_in_shopping_cart_field)
+from services.get_fields import (get_is_favorited_field,
+                                 get_is_in_shopping_cart_field,
+                                 get_recipe_ingredient_list)
 from services.set_fields import set_ingredients_to_recipe
-from services.validate_fields import (check_cooking_time,
-                                        check_ingredients,
-                                        check_tags)
+from services.validate_fields import (check_cooking_time, check_ingredients,
+                                      check_tags)
+from users.serializers import CustomUserSerializer
+
 from .fields import Base64ImageField
+from .models import Ingredient, Recipe, RecipeIngredient, Tag
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -102,14 +102,11 @@ class AddRecipeSerializer(serializers.ModelSerializer):
         fields = ('id', 'tags', 'author', 'ingredients',
                   'name', 'text', 'image', 'cooking_time')
 
-    def validate_cooking_time(self, value):
-        return check_cooking_time(value)
-
-    def validate_ingredients(self, ingredients):
-        return check_ingredients(ingredients)
-
-    def validate_tags(self, tags):
-        return check_tags(tags)
+    def validate(self, data):
+        check_ingredients(data.get('ingredients'))
+        check_tags(data.get('tags'))
+        check_cooking_time(data.get('cooking_time'))
+        return data
 
     def create(self, validated_data):
         author = self.context.get('request').user
@@ -133,4 +130,3 @@ class AddRecipeSerializer(serializers.ModelSerializer):
             recipe,
             context={'request': self.context.get('request')}).data
         return data
-

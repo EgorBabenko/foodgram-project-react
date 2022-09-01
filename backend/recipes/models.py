@@ -1,5 +1,7 @@
 from django.db import models
+from services.validate_fields import check_amount, check_cooking_time
 from users.models import CustomUser
+
 from .fields import HexField
 
 
@@ -59,19 +61,20 @@ class Recipe(models.Model):
                                          through_fields=('recipe',
                                                          'ingredient'),
                                          related_name='recipes',
-                                         verbose_name='Ингредиенты рецепта'
+                                         verbose_name='Ингредиенты рецепта',
                                          )
     tags = models.ManyToManyField(Tag, blank=False, verbose_name='Теги')
     cooking_time = models.PositiveIntegerField(blank=False, null=False,
+                                               validators=[check_cooking_time],
                                                verbose_name='Время готовки')
 
     who_chose = models.ManyToManyField(CustomUser, through='Favorite',
                                        through_fields=('recipe', 'user'),
-                                       related_name='favorites_recipes',)
+                                       related_name='favorites_recipes', )
 
     who_bought = models.ManyToManyField(CustomUser, through='ShoppingCart',
                                         through_fields=('recipe', 'user'),
-                                        related_name='purchases_list')
+                                        related_name='purchases_list', )
 
     class Meta:
         ordering = ('-id',)
@@ -91,7 +94,8 @@ class RecipeIngredient(models.Model):
                                    on_delete=models.CASCADE,
                                    verbose_name='тип ингредиента')
     amount = models.FloatField(blank=False, null=False,
-                               verbose_name='количество')
+                               verbose_name='количество',
+                               validators=[check_amount])
 
     class Meta:
         verbose_name = 'Ингредиент рецепта'

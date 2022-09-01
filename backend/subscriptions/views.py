@@ -1,11 +1,11 @@
 from django.db import IntegrityError
 from rest_framework import status
-from rest_framework.generics import ListAPIView, get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.generics import ListAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from users.models import CustomUser, Following
 from services.get_error_message import get_error_message
+from users.models import CustomUser, Following
 
 from .serializers import SubscribeSerializer
 
@@ -15,8 +15,7 @@ class SubscriptionsAPIView(ListAPIView):
     serializer_class = SubscribeSerializer
 
     def get_queryset(self):
-        new_queryset = self.request.user.sub_list.all()
-        return new_queryset
+        return self.request.user.sub_list.all()
 
 
 @api_view(['POST', 'DELETE'])
