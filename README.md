@@ -2,14 +2,14 @@
 
 [![foodgram_workflow](https://github.com/EgorBabenko/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)](https://github.com/EgorBabenko/foodgram-project-react/actions/workflows/foodgram_workflow.yml)
 
-####П роект доступен по адресу:
+#### Проект доступен по адресу:
 http://84.252.137.162/recipes
 #### Тестовый пользователь
 - email: admin@admin.ru  (суперюзер)
 - password: admin
 
 
-###Описание проекта:
+### Описание проекта:
 Сервис позволяет пользователям публиковать свои рецепты, подписываться на
 других авторов, добавлять рецепты в избранное и список покупок. При создании
 списка покупок, создается pdf-файл с перечнем необходимых продуктов и их
