@@ -28,7 +28,7 @@ class Tag(models.Model):
 
 
 class Ingredient(models.Model):
-    name = models.CharField(max_length=32, blank=False, null=False,
+    name = models.CharField(max_length=100, blank=False, null=False,
                             verbose_name='Название ингредиента',
                             help_text='Введите название ингредиента')
 
@@ -143,7 +143,7 @@ class ShoppingCart(models.Model):
         verbose_name = 'Покупка'
         verbose_name_plural = 'Списки покупок'
         constraints = [
-            # ограничение повторной покупки
+            # ограничение повторной покупки.
             models.UniqueConstraint(fields=['user', 'recipe'], name='uniq'), ]
 
     def __str__(self):
