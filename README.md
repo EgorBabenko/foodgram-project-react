@@ -1,5 +1,7 @@
 #Foodgram - социальная сеть для кулинаров
+
 [![foodgram_workflow](https://github.com/EgorBabenko/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)](https://github.com/EgorBabenko/foodgram-project-react/actions/workflows/foodgram_workflow.yml)
+
 ####Проект доступен по адресу:
 http://84.252.137.162/recipes
 ####Тестовый пользователь
