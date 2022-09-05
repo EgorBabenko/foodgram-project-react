@@ -31,7 +31,7 @@ def add_or_delete_sub(request, pk):
                             )
         except IntegrityError as error:
             error_message = get_error_message(error.__str__(),
-                                              'sub')
+                                              Following.__name__)
             return Response({'errors': error_message},
                             status=status.HTTP_400_BAD_REQUEST)
 

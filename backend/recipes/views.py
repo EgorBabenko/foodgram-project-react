@@ -14,7 +14,7 @@ from services.get_shopping_list import get_shopping_list
 from weasyprint import HTML
 
 from .filters import FilterForIngredients, FilterForRecipes
-from .models import Favorite, Ingredient, Recipe, ShoppingCart, Tag
+from .models import Ingredient, Recipe, Tag
 from .permissions import PermissionForRecipe
 from .serializers import (AddRecipeSerializer, IngredientSerializer,
                           RecipeSerializer, ShortRecipeSerializer,

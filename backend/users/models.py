@@ -30,6 +30,7 @@ class CustomUser(AbstractUser):
 
 
 class Following(models.Model):
+    """Модель подписок пользователей"""
     follower = models.ForeignKey(CustomUser,
                                  related_name='sub',
                                  on_delete=models.CASCADE,

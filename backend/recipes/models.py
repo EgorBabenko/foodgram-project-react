@@ -6,6 +6,7 @@ from .fields import HexField
 
 
 class Tag(models.Model):
+    """Модель тегов"""
     name = models.CharField(max_length=20, blank=False,
                             unique=True, null=False,
                             verbose_name='Имя тега',
@@ -28,6 +29,7 @@ class Tag(models.Model):
 
 
 class Ingredient(models.Model):
+    """Модель типа ингредиента"""
     name = models.CharField(max_length=100, blank=False, null=False,
                             verbose_name='Название ингредиента',
                             help_text='Введите название ингредиента')
@@ -46,6 +48,7 @@ class Ingredient(models.Model):
 
 
 class Recipe(models.Model):
+    """Модель рецепта"""
     author = models.ForeignKey(CustomUser,
                                on_delete=models.CASCADE,
                                blank=False, related_name='recipes', null=False,
@@ -86,6 +89,7 @@ class Recipe(models.Model):
 
 
 class RecipeIngredient(models.Model):
+    """Модель ингредиента в составе рецепта"""
     recipe = models.ForeignKey(Recipe, related_name='ingredients_list',
                                on_delete=models.CASCADE,
                                verbose_name='рецепт')
@@ -108,6 +112,7 @@ class RecipeIngredient(models.Model):
 
 
 class Favorite(models.Model):
+    """Модель избранных пользователем рецептов"""
     user = models.ForeignKey(CustomUser,
                              related_name='favorites',
                              on_delete=models.CASCADE,
@@ -130,6 +135,7 @@ class Favorite(models.Model):
 
 
 class ShoppingCart(models.Model):
+    """Модель списка покупок пользователя"""
     user = models.ForeignKey(CustomUser,
                              related_name='purchases',
                              on_delete=models.CASCADE,

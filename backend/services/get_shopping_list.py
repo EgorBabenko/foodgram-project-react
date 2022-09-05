@@ -3,6 +3,14 @@ from recipes.models import RecipeIngredient
 
 
 def get_shopping_list(user):
+    """
+    Получение
+    Args:
+        user (users.models.CustomUser): объект пользователя
+
+    Returns:
+        ingredients (django.db.models.query.QuerySet): список ингредиентов + количество
+    """
     ingredients = RecipeIngredient.objects.filter(
         recipe__byers__user=user).values(
         name=F('ingredient__name'),
